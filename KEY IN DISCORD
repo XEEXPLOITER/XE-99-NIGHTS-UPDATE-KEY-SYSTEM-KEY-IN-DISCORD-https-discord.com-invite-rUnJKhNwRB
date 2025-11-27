@@ -1,0 +1,259 @@
+https://discord.com/invite/rUnJKhNwRB
+
+repeat task.wait() until game:IsLoaded()
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local player = Players.LocalPlayer
+local pgui = player:WaitForChild("PlayerGui")
+local KEY = "pizza"
+
+-- ╔═══════════════════════════════════════════════════════════════════════════╗
+-- ║ XE EXPLOITER - FINAL (NEW LOGO + XE 99 NIGHTS ADDED + NO SCROLL)        ║
+-- ╚═══════════════════════════════════════════════════════════════════════════╝
+
+local introGui = Instance.new("ScreenGui")
+introGui.Name = "XEIntro"
+introGui.ResetOnSpawn = false
+introGui.Parent = pgui
+
+local bg = Instance.new("Frame")
+bg.Size = UDim2.new(1,0,1,0)
+bg.BackgroundColor3 = Color3.new(0,0,0)
+bg.Parent = introGui
+
+local logo = Instance.new("ImageLabel")
+logo.Size = UDim2.new(0,0,0,0)
+logo.Position = UDim2.new(0.5,0,0.5,0)
+logo.AnchorPoint = Vector2.new(0.5,0.5)
+logo.BackgroundTransparency = 1
+logo.Image = "rbxassetid://99306304596878"
+logo.ImageTransparency = 1
+logo.Parent = bg
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1,0,0.25,0)
+title.Position = UDim2.new(0.5,0,0.75,0)
+title.AnchorPoint = Vector2.new(0.5,0.5)
+title.Text = ""
+title.TextColor3 = Color3.fromRGB(0,255,255)
+title.Font = Enum.Font.GothamBlack
+title.TextSize = 100
+title.TextStrokeTransparency = 0.4
+title.TextStrokeColor3 = Color3.fromRGB(255,0,255)
+title.BackgroundTransparency = 1
+title.Parent = bg
+
+local function typeWrite(label, text)
+    label.Text = ""
+    for i = 1, #text do
+        label.Text = label.Text .. text:sub(i,i)
+        task.wait(0.09)
+    end
+end
+
+local function glitch(label, times)
+    local og = label.Text
+    for i = 1, times do
+        label.Text = ""
+        for _, c in ipairs(og:split("")) do
+            label.Text = label.Text .. (math.random(1,4)==1 and "█" or c)
+        end
+        task.wait(0.05)
+    end
+    label.Text = og
+end
+
+spawn(function()
+    task.wait(0.3)
+    TweenService:Create(logo, TweenInfo.new(1.6, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Size = UDim2.new(0.7,0,0.7,0),
+        ImageTransparency = 0.25
+    }):Play()
+   
+    task.wait(1.2)
+    typeWrite(title, "XE EXPLOITER")
+    task.wait(0.6)
+    glitch(title, 20)
+   
+    task.wait(1.8)
+    TweenService:Create(bg, TweenInfo.new(1.2), {BackgroundTransparency = 1}):Play()
+    TweenService:Create(logo, TweenInfo.new(1.2), {ImageTransparency = 1}):Play()
+    TweenService:Create(title, TweenInfo.new(1.2), {TextTransparency = 1}):Play()
+   
+    task.wait(1.4)
+    introGui:Destroy()
+    loadKeySystem()
+end)
+
+function loadKeySystem()
+    local keyGui = Instance.new("ScreenGui")
+    keyGui.ResetOnSpawn = false
+    keyGui.Parent = pgui
+
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0,460,0,280)
+    frame.Position = UDim2.new(0.5,-230,0.5,-140)
+    frame.BackgroundColor3 = Color3.new(0,0,0)
+    frame.Parent = keyGui
+    Instance.new("UICorner", frame).CornerRadius = UDim.new(0,20)
+
+    local stroke = Instance.new("UIStroke", frame)
+    stroke.Thickness = 5
+    stroke.Color = Color3.fromRGB(0,255,255)
+
+    local img = Instance.new("ImageLabel")
+    img.Size = UDim2.new(0.4,0,0.4,0)
+    img.Position = UDim2.new(0.5,0,0.05,0)
+    img.AnchorPoint = Vector2.new(0.5,0)
+    img.BackgroundTransparency = 1
+    img.Image = "rbxassetid://99306304596878"
+    img.Parent = frame
+
+    local t = Instance.new("TextLabel", frame)
+    t.Text = "XE EXPLOITER"
+    t.Size = UDim2.new(1,0,0.15,0)
+    t.Position = UDim2.new(0,0,0.45,0)
+    t.BackgroundTransparency = 1
+    t.TextColor3 = Color3.fromRGB(0,255,255)
+    t.Font = Enum.Font.GothamBlack
+    t.TextSize = 50
+
+    local box = Instance.new("TextBox", frame)
+    box.Size = UDim2.new(0.8,0,0.16,0)
+    box.Position = UDim2.new(0.1,0,0.62,0)
+    box.BackgroundColor3 = Color3.fromRGB(15,15,15)
+    box.PlaceholderText = "Enter key..."
+    box.TextColor3 = Color3.new(1,1,1)
+    box.Font = Enum.Font.GothamBold
+    box.TextSize = 26
+    Instance.new("UICorner", box)
+
+    local btn = Instance.new("TextButton", frame)
+    btn.Size = UDim2.new(0.7,0,0.16,0)
+    btn.Position = UDim2.new(0.15,0,0.82,0)
+    btn.BackgroundColor3 = Color3.fromRGB(0,255,100)
+    btn.Text = "UNLOCK"
+    btn.TextColor3 = Color3.new(0,0,0)
+    btn.Font = Enum.Font.GothamBlack
+    btn.TextSize = 32
+    Instance.new("UICorner", btn)
+
+    btn.MouseButton1Click:Connect(function()
+        if box.Text:lower() == KEY then
+            keyGui:Destroy()
+            loadMainHub()
+        else
+            box.Text = ""
+            box.PlaceholderText = "Wrong key lil bro"
+            stroke.Color = Color3.fromRGB(255,0,0)
+            task.wait(1.5)
+            stroke.Color = Color3.fromRGB(0,255,255)
+        end
+    end)
+end
+
+function loadMainHub()
+    local selectorGui = Instance.new("ScreenGui")
+    selectorGui.ResetOnSpawn = false
+    selectorGui.Parent = pgui
+
+    -- Bigger clean frame (no scrolling)
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.new(0, 680, 0, 880)
+    mainFrame.Position = UDim2.new(0.5, -340, 0.5, -440)
+    mainFrame.BackgroundColor3 = Color3.new(0,0,0)
+    mainFrame.Parent = selectorGui
+    Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0,30)
+
+    local glow = Instance.new("UIStroke", mainFrame)
+    glow.Thickness = 7
+    glow.Color = Color3.fromRGB(0,255,255)
+    glow.Transparency = 0.3
+
+    -- Title
+    local title = Instance.new("TextLabel", mainFrame)
+    title.Text = "XE EXPLOITER"
+    title.Size = UDim2.new(1,0,0,100)
+    title.BackgroundTransparency = 1
+    title.TextColor3 = Color3.fromRGB(0,255,255)
+    title.Font = Enum.Font.GothamBlack
+    title.TextSize = 70
+
+    -- Discord
+    local discord = Instance.new("TextLabel", mainFrame)
+    discord.Text = "Discord: discord.gg/rUnJKhNwRB"
+    discord.Size = UDim2.new(1,0,0,50)
+    discord.Position = UDim2.new(0,0,0.11,0)
+    discord.BackgroundTransparency = 1
+    discord.TextColor3 = Color3.fromRGB(100,255,255)
+    discord.TextSize = 32
+
+    -- Credit
+    local credit = Instance.new("TextLabel", mainFrame)
+    credit.Text = "By: XE Exploiter"
+    credit.Size = UDim2.new(1,0,0,50)
+    credit.Position = UDim2.new(0,0,1,-50)
+    credit.BackgroundTransparency = 1
+    credit.TextColor3 = Color3.fromRGB(0,255,255)
+    credit.TextSize = 30
+
+    local function makeButton(name, color, url)
+        local btn = Instance.new("TextButton")
+        btn.Size = UDim2.new(0.9, 0, 0, 120)
+        btn.BackgroundColor3 = color
+        btn.Text = name
+        btn.TextColor3 = Color3.new(1,1,1)
+        btn.Font = Enum.Font.GothamBlack
+        btn.TextSize = 42
+        btn.Parent = mainFrame
+        Instance.new("UICorner", btn).CornerRadius = UDim.new(0,20)
+
+        local stroke = Instance.new("UIStroke", btn)
+        stroke.Thickness = 5
+        stroke.Transparency = 1
+        stroke.Color = Color3.fromRGB(0,255,255)
+
+        btn.MouseEnter:Connect(function()
+            TweenService:Create(btn, TweenInfo.new(0.25), {BackgroundColor3 = color:lerp(Color3.new(1,1,1), 0.35)}):Play()
+            TweenService:Create(stroke, TweenInfo.new(0.25), {Transparency = 0}):Play()
+        end)
+        btn.MouseLeave:Connect(function()
+            TweenService:Create(btn, TweenInfo.new(0.25), {BackgroundColor3 = color}):Play()
+            TweenService:Create(stroke, TweenInfo.new(0.25), {Transparency = 1}):Play()
+        end)
+
+        btn.MouseButton1Click:Connect(function()
+            selectorGui:Destroy()
+            loadstring(game:HttpGet(url))()
+        end)
+    end
+
+    -- Buttons positioned manually (no scroll, all visible)
+    makeButton("XE 99 NIGHTS", Color3.fromRGB(138, 0, 255), "https://raw.githubusercontent.com/XEEXPLOITER/XE-99-NIGHTS/refs/heads/main/XE%2099%20NIGHTS")
+    makeButton("STEAL A BRAINROT XE", Color3.fromRGB(255,50,255), "https://pastebin.com/raw/VhcJrXs0")
+    makeButton("3008 XE ULTIMATE", Color3.fromRGB(0,150,255), "https://pastebin.com/raw/WJhYb03J")
+    makeButton("VOXTEK UNIVERSAL", Color3.fromRGB(255,100,0), "https://pastebin.com/raw/SAdXNjpu")
+    makeButton("XE OFFICIAL", Color3.fromRGB(35,35,40), "https://pastebin.com/raw/b5r9xDqp")
+
+    -- Manual positioning (stacked nicely)
+    local buttons = mainFrame:GetChildren()
+    local yOffset = 180
+    for _, btn in ipairs(buttons) do
+        if btn:IsA("TextButton") then
+            btn.Position = UDim2.new(0.05, 0, 0, yOffset)
+            yOffset = yOffset + 140
+        end
+    end
+
+    game.StarterGui:SetCore("SendNotification",{
+        Title = "XE EXPLOITER",
+        Text = "Loaded successfully • XE 99 NIGHTS added!",
+        Duration = 10
+    })
+end
+
+game.StarterGui:SetCore("SendNotification",{
+    Title = "XE EXPLOITER",
+    Text = "Injecting new logo intro + XE 99 NIGHTS...",
+    Duration = 6
+})
